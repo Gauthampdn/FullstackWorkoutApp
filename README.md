@@ -1,1 +1,2 @@
-Mern turotial
+# Mern tutorial
+## by Gautham Pandian
