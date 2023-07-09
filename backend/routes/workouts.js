@@ -19,10 +19,10 @@ router.get("/:id", (req, res) => {
 router.post("/", async (req, res) => {
   const {title, load, reps} = req.body
   
-  try{
-    const workout = Workout.create
-  }
-  catch(error) {
+  try {
+    const workout = await Workout.create( {title, load, reps} ) 
+    
+  } catch(error) {
 
   }
 
