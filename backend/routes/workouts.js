@@ -17,15 +17,14 @@ router.get("/:id", (req, res) => {
 
 // POST a workout
 router.post("/", async (req, res) => {
-  const {title, load, reps} = req.body
+  // const {title, load, reps} = req.body
   
-  try {
-    const workout = await Workout.create( {title, load, reps} ) 
+  // try {
+  //   const workout = await Workout.create( {title, load, reps} ) 
     
-  } catch(error) {
+  // } catch(error) {
 
-  }
-
+  // }
   res.json({ mssg: "POST a workout"})
 })
 
