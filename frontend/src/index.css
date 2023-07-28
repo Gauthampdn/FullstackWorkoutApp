@@ -137,3 +137,47 @@ div.error {
 input.error {
   border: 1px solid var(--error);
 }
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+    margin-left: 10px;
+  border: 2px solid var(--secondary);
+  border-radius: 8px;
+  padding: 10px;
+  color: var(--secondary);
+  background-color: white;
+  transition: color 0.08s ease-in, background-color 0.08s ease-in;
+}
+
+nav a:hover {
+  background-color: var(--secondary);
+  color: white;
+}
+
+nav span {
+   margin-right: 15px;
+}
+
+nav button {
+  background: #fff;
+  color: var(--secondary);
+  border: 2px solid var(--secondary);
+  border-radius: 8px;
+  padding: 8px;
+  font-family: "Poppins";
+  cursor: pointer;
+}
+
+
+/* auth forms */
+form.signup, form.login {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 40px;
+  background: #fff;
+  border-radius: 20px;
+}
