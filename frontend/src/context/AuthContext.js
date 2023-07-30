@@ -1,4 +1,4 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useEffect } from "react";
 
 export const AuthContext = createContext()
 
@@ -18,6 +18,17 @@ export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(authReducer, {
     user: null
   })
+
+  useEffect(() => { // check if we have the JWT token is present when we load for the first time
+    const user = JSON.parse(localStorage.getItem("user"))
+
+    if(user){
+      dispatch({type: "LOGIN", payload: user})
+    }
+
+
+  }, []) // '[]' is so that only fire the funciton once when the component first renders
+
 
   console.log("AuthContext State: ", state)
 

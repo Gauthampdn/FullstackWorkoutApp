@@ -11,9 +11,12 @@ const {
 
 } = require("../controllers/workoutController")
 
+const requireAuth = require("../middleware/requireAuth")
+
+router.use(requireAuth) // requires authentication and then calls next. if no authentication then it throws an error
+
 // to GET all workouts
 router.get("/", getWorkouts)
-
 
 // to GET a single workout
 router.get("/:id", getWorkout)
