@@ -7,10 +7,13 @@ const express = require("express")
 const mongoose = require("mongoose")
 const workoutRoutes = require("./routes/workouts")
 const userRoutes = require("./routes/user")
-
+const cors = require('cors');
 
 // express app
 const app = express()
+
+app.use(cors());
+
 
 // middleware
 app.use(express.json()) // to get req body
