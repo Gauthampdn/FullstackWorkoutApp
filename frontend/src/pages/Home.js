@@ -12,7 +12,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch('/api/workouts', {
+      const response = await fetch('https://mernworkout.onrender.com/api/workouts', {
         headers: {
           "Authorization": `Bearer ${user.token}`    // backticks for template string to have variable inside
         }
