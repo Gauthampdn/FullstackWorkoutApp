@@ -17,7 +17,7 @@ const Home = () => {
           "Authorization": `Bearer ${user.token}`    // backticks for template string to have variable inside
         }
       })
-      const json = await response.json()
+      const json = await response.json() 
 
       if (response.ok) {
         dispatch({type: 'SET_WORKOUTS', payload: json})
