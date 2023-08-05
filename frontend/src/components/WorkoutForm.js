@@ -13,13 +13,17 @@ const WorkoutForm = () => {
   const [reps, setReps] = useState("")
   const [error, setError] = useState(null)
   const [emptyFields, setEmptyFields] = useState([])
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+
+    setIsSubmitting(true)  // Setting isSubmitting to true before making request
     
     if(!user){
       setError("You must be logged in")
+      setIsSubmitting(false)
       return
     }
 
@@ -36,6 +40,8 @@ const WorkoutForm = () => {
      
     const json = await response.json()
 
+    setIsSubmitting(false) // Setting isSubmitting back to false after getting response
+
     if(!response.ok){
       setError(json.error)
       setEmptyFields(json.emptyFields)
@@ -49,9 +55,7 @@ const WorkoutForm = () => {
       setEmptyFields([])
       console.log("new workout added", json)
       dispatch({type: "CREATE_WORKOUT", payload: json })
-      
     }
-
   }
 
   return ( 
@@ -65,7 +69,6 @@ const WorkoutForm = () => {
         onChange={(e) => setTitle(e.target.value)}
         value={title}
         className={emptyFields.includes("title") ? "error" : "" }
-
       />
 
       <label> Load (lbs):</label>
@@ -82,15 +85,14 @@ const WorkoutForm = () => {
         onChange={(e) => setReps(e.target.value)}
         value={reps}
         className={emptyFields.includes("reps") ? "error" : "" }
-
       />
 
-      <button> Add Workout</button>
+      <button disabled={isSubmitting}> 
+        {isSubmitting ? "Loading..." : "Add Workout"} 
+      </button>
       { error && <div className="error">{error}</div> }
       
     </form>
-
-
    );
 }
  
